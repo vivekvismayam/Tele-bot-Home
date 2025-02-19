@@ -15,10 +15,9 @@ bot.onText(/\/status/, (msg) => {
 //commands executions
 bot.onText(/\/exec/, (msg) => {
     const chatId = msg.chat.id;
-    console.log(msg)
-    if (msg?.chat?.username&&process.env.ALLOWED_USENAMES.includes(msg?.chat?.username)) {
+    if (msg?.chat?.username&&process.env.ALLOWED_USENAMES.includes('!'+msg?.chat?.username+'!')) {
         const commandText=msg?.text?.split('/exec ').pop()
-        console.log('EX::::|'+commandText+'|')
+        //console.log('EX::::|'+commandText+'|')
         exec(commandText, (err, stdout, stderr) => {
             if (err) {
                 // node couldn't execute the command
