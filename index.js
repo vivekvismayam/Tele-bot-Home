@@ -9,7 +9,8 @@ const bot = new TelegramBot(token, { polling: true });
 
 bot.onText(/\/status/, (msg) => {
     const chatId = msg.chat.id;
-    bot.sendMessage(chatId, 'Bot @ Aiswarya Ambalappara Up and Running!!!');
+    var datetime = new Date();
+    bot.sendMessage(chatId, 'Bot @ Aiswarya Ambalappara Up and Running!!! '+datetime);
 });
 //commands executions
 bot.on('message', (msg) => {
