@@ -13,10 +13,11 @@ bot.onText(/\/status/, (msg) => {
     bot.sendMessage(chatId, 'Bot @ '+hosthome+' Up and Running!!! '+datetime);
 });
 //commands executions
-bot.on('message', (msg) => {
+bot.onText(/\/exec/, (msg) => {
     const chatId = msg.chat.id;
-    if (msg?.text.startsWith('/' + hosthome + ' ')) {
-        const commandText=msg?.text?.split('/' + hosthome + ' ').pop()
+    console.log(msg)
+    if (msg?.chat?.username&&process.env.ALLOWED_USENAMES.includes(msg?.chat?.username)) {
+        const commandText=msg?.text?.split('/exec ').pop()
         console.log('EX::::|'+commandText+'|')
         exec(commandText, (err, stdout, stderr) => {
             if (err) {
