@@ -15,7 +15,8 @@ bot.onText(/\/status/, (msg) => {
 //commands executions
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
-    if (msg?.text.startsWith('/' + hosthome + ' ')) {
+    console.log(msg)
+    if (process.env.ALLOWED_USENAMES.includes(msg?.chat?.username)&& msg?.text.startsWith('/' + hosthome + ' ')) {
         const commandText=msg?.text?.split('/' + hosthome + ' ').pop()
         console.log('EX::::|'+commandText+'|')
         exec(commandText, (err, stdout, stderr) => {
